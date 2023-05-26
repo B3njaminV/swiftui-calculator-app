@@ -1,34 +1,44 @@
-//
-//  UEView.swift
-//  Calculator
-//
-//  Created by etudiant on 25/05/2023.
-//
-
 import SwiftUI
 
 struct UEView: View {
     var body: some View {
         NavigationStack{
-            VStack{
-                HStack{
-                    Text("UE1 - Génie logiciel")
-                    Spacer()
-                    Text("6")
-                }
-                .padding(.horizontal)
-                HStack{
-                    Rectangle()
-                        .frame(width: 100, height: 30)
-                        .cornerRadius(20)
-                        .foregroundColor(Color("ColorOK"))
-                    Text("12.22")
-                    Spacer()
-                    NavigationLink(destination: UEView()){
-                        Image(systemName: "square.and.pencil")
+            ScrollView{
+                VStack(alignment: .leading){
+                    VStack{
+                        ItemView()
+                            .padding()
+                    }
+                    .padding()
+                    VStack(alignment: .leading){
+                        HStack{
+                            Image(systemName: "xmark.circle.fill")
+                            Text("coefficient :")
+                            Text("5")
+                        }
+                        HStack{
+                            Image(systemName: "map")
+                            Text("Détails des notes")
+                        }
+                    }
+                    .padding(.bottom)
+                    VStack{
+                        HStack{
+                            NavigationLink(destination: UEView()){
+                                Image(systemName: "lock")
+                            }
+                            ItemView()
+                        }
+                        .padding(.horizontal)
                     }
                 }
-                .padding(.horizontal)
+            }
+            .navigationTitle("UE1 Génie logiciel")
+            .toolbar{
+                Button(action: {
+                }) {
+                    Text("Edit")
+                }
             }
         }
     }

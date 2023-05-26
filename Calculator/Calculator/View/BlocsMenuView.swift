@@ -1,13 +1,6 @@
-//
-//  BlocsView.swift
-//  Calculator
-//
-//  Created by etudiant on 25/05/2023.
-//
-
 import SwiftUI
 
-struct BlocsView: View {
+struct BlocsMenuView: View {
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -38,8 +31,8 @@ struct BlocsView: View {
     }
 }
 
-struct BlocsView_Previews: PreviewProvider {
+struct BlocsMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        BlocsView()
+        BlocsMenuView()
     }
 }
