@@ -141,11 +141,11 @@
 		EC26BA872A1FAFB800780B60 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC76E4742A20E0AD0008992A /* CalculatorView.swift */,
 				EC26BA832A1FAB2600780B60 /* BlocsMenuView.swift */,
 				EC26BA852A1FAEB100780B60 /* UEMenuView.swift */,
 				EC26BA882A1FB03500780B60 /* ItemView.swift */,
 				EC76E4722A20E0720008992A /* UEView.swift */,
-				EC76E4742A20E0AD0008992A /* CalculatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
