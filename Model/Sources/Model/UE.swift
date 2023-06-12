@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UE : Identifiable {
+public struct UE : Identifiable, Equatable {
     
     public let id: UUID
     public var numero:Int32
@@ -19,18 +19,16 @@ public struct UE : Identifiable {
         self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient)
     }
     
-    public func loadUE() -> [UE]{
-        let formatter = DateFormatter()
-        var ues: [UE] = []
-        var ue1 = UE(withNumero: 1, andName: "Génie Logiciel", andCoefficient: 6)
-        ue1.matieres.append(Matiere(withName: "Processus de développement", andCoefficient: 4, andNote: 10))
-        ue1.matieres.append(Matiere(withName: "Programmation Objets", andCoefficient: 9, andNote: 10))
-        ues.append(ue1)
-        var ue2 = UE(withNumero: 1, andName: "Systèmes et réseaux", andCoefficient: 6)
-        ue2.matieres.append(Matiere(withName: "Internet des Objets", andCoefficient: 4, andNote: 10))
-        ue2.matieres.append(Matiere(withName: "Services Mobiles", andCoefficient: 9, andNote: 10))
-        ues.append(ue2)
-        return ues
+    public mutating func addMatiere(matiere: Matiere) -> Void {
+        matieres.append(matiere)
     }
-
+        
+    public mutating func addManyMatiere(matieres: Matiere...) -> Void {
+        self.matieres.append(contentsOf: matieres)
+    }
+    
+    public static func == (lhs: UE, rhs: UE) -> Bool {
+        return lhs.id == rhs.id
+    }
+        
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Matiere : Identifiable {
+public struct Matiere : Identifiable, Equatable {
     
     public let id: UUID
     public var name: String
@@ -16,6 +16,10 @@ public struct Matiere : Identifiable {
     
     public init(withName name: String, andCoefficient coefficient: Int32, andNote note: Float){
         self.init(withId: UUID(), andName: name, andCoefficient: coefficient, andNote: note)
+    }
+    
+    public static func == (lhs: Matiere, rhs: Matiere) -> Bool {
+        return lhs.id == rhs.id
     }
     
 }
