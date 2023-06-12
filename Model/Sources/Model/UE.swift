@@ -8,11 +8,20 @@ public struct UE : Identifiable, Equatable {
     public var coefficient: Int32
     public var matieres: [Matiere] = []
     
-    public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32){
+    public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
         self.id=id
         self.numero=numero
         self.name=name
         self.coefficient=coefficient
+        self.matieres=matieres
+    }
+    
+    public init(withNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
+        self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient, andMatiere: [])
+    }
+    
+    public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32){
+        self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient, andMatiere: [])
     }
         
     public init(withNumero numero : Int32, andName name: String, andCoefficient coefficient: Int32){
