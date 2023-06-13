@@ -10,9 +10,9 @@ class BlocVM : ObservableObject, Identifiable, Equatable {
         // 2 on met à jour la vue
         self.objectWillChange.send()
     }
+    
     public init(model: Bloc) {
         self.model = model
-        self.uesVM.forEach{$0}
     }
     
     public var id: UUID { model.id }
@@ -25,6 +25,7 @@ class BlocVM : ObservableObject, Identifiable, Equatable {
             }
             if !self.model.ues.compare(to: self.uesVM.map({$0.model})){
                 self.uesVM = self.model.ues.map({UEVM(withModel: $0)})
+                self.uesVM.forEach({$0.subscribe(self.onNotified(source:))})
             }
         }
     }

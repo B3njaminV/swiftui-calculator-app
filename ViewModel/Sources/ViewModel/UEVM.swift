@@ -12,7 +12,7 @@ class UEVM : ObservableObject, Identifiable, Equatable {
         }
     }
     
-    public func subscribe(source: @escaping (UEVM) -> ()){
+    public func subscribe(_ source: @escaping (UEVM) -> ()){
         self.notificationsFuncs.append(source)
     }
     
@@ -25,6 +25,7 @@ class UEVM : ObservableObject, Identifiable, Equatable {
         // Notifier la vue
         self.objectWillChange.send()
     }
+    
     public init(){}
 
     public init(withModel model: UE){
