@@ -11,42 +11,42 @@ struct UEMenuView: View {
                         Text("Détail des UEs")
                         VStack {
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }
                                 Divider()
                             }
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }
                                 Divider()
                             }
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }
                                 Divider()
                             }
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }
                                 Divider()
                             }
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }
                                 Divider()
                             }
                             HStack{
-                                ItemView()
+                                MatiereView()
                                 NavigationLink(destination: UEView()){
                                     Image(systemName: "square.and.pencil")
                                 }

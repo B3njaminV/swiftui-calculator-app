@@ -6,7 +6,7 @@ struct UEView: View {
             ScrollView{
                 VStack(alignment: .leading){
                     VStack{
-                        ItemView()
+                        MatiereView()
                             .padding()
                     }
                     .padding()
@@ -27,7 +27,7 @@ struct UEView: View {
                             NavigationLink(destination: UEView()){
                                 Image(systemName: "lock")
                             }
-                            ItemView()
+                            MatiereView()
                         }
                         .padding(.horizontal)
                     }

@@ -2,7 +2,7 @@ import Foundation
 import Model
 
 @available(iOS 13.0, *)
-class MatiereVM : ObservableObject, Identifiable {
+public class MatiereVM : ObservableObject, Identifiable {
     
     private var notificationsFuncs: [(MatiereVM) -> ()] = []
     

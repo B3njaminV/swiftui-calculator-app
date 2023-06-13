@@ -2,7 +2,7 @@ import Foundation
 import Model
 
 @available(iOS 13.0, *)
-class UEVM : ObservableObject, Identifiable, Equatable {
+public class UEVM : ObservableObject, Identifiable, Equatable {
     
     private var notificationsFuncs: [(UEVM) -> ()] = []
     

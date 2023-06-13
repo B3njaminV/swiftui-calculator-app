@@ -2,7 +2,7 @@ import Foundation
 import Model
 
 @available(iOS 13.0, *)
-class BlocVM : ObservableObject, Identifiable, Equatable {
+public class BlocVM : ObservableObject, Identifiable, Equatable {
     
     func onNotified(source: UEVM){
         // 1 on met à jour le model

@@ -1,9 +1,10 @@
 import SwiftUI
+import ViewModel
 
-struct ItemView: View {
+struct MatiereView: View {
     
     @State private var note: Double = 20.0
-    //@ObservedObject var editableMatiere: MatiereVM
+    @ObservedObject var matiere: MatiereVM
     
     var body: some View {
         NavigationStack{
@@ -41,8 +42,8 @@ struct ItemView: View {
     }
 }
 
-struct ItemView_Previews: PreviewProvider {
+struct MatiereView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView()
+        MatiereView()
     }
 }
