@@ -3,6 +3,19 @@ import Model
 
 @available(iOS 13.0, *)
 class MatiereVM : ObservableObject, Identifiable {
+    
+    private var notificationsFuncs: [(MatiereVM) -> ()] = []
+    
+    private func onNotify(){
+        for f in notificationsFuncs{
+            f(self)
+        }
+    }
+    
+    public func subscribe(_ source: @escaping (MatiereVM) -> ()){
+        self.notificationsFuncs.append(source)
+    }
+    
     public init(){}
 
     public init(withModel model: Matiere){
@@ -22,6 +35,7 @@ class MatiereVM : ObservableObject, Identifiable {
             if self.model.note != self.note {
                 self.model.note = self.note
             }
+            onNotify()
         }
     }
          

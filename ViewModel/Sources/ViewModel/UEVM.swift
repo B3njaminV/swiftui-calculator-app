@@ -4,6 +4,27 @@ import Model
 @available(iOS 13.0, *)
 class UEVM : ObservableObject, Identifiable, Equatable {
     
+    private var notificationsFuncs: [(UEVM) -> ()] = []
+    
+    private func onNotify(){
+        for f in notificationsFuncs{
+            f(self)
+        }
+    }
+    
+    public func subscribe(source: @escaping (UEVM) -> ()){
+        self.notificationsFuncs.append(source)
+    }
+    
+    func onNotified(source: MatiereVM){
+        // Mettre à jour le model si on wrappe un model
+        // on écoute si le model a changés
+        if let index = self.model.matieres.firstIndex(where: {$0 == source.model}){
+            self.model.matieres[index] = source.model
+        }
+        // Notifier la vue
+        self.objectWillChange.send()
+    }
     public init(){}
 
     public init(withModel model: UE){
@@ -25,8 +46,9 @@ class UEVM : ObservableObject, Identifiable, Equatable {
             }
             if !self.model.matieres.compare(to: self.matieresVM.map({$0.model})){
                 self.matieresVM = self.model.matieres.map({MatiereVM(withModel: $0)})
+                self.matieresVM.forEach({$0.subscribe(self.onNotified(source:))})
             }
-            
+            onNotify()
         }
     }
          

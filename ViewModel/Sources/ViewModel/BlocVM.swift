@@ -3,8 +3,16 @@ import Model
 
 @available(iOS 13.0, *)
 class BlocVM : ObservableObject, Identifiable, Equatable {
+    
+    func onNotified(source: UEVM){
+        // 1 on met à jour le model
+        // ici y'en a pas
+        // 2 on met à jour la vue
+        self.objectWillChange.send()
+    }
     public init(model: Bloc) {
         self.model = model
+        self.uesVM.forEach{$0}
     }
     
     public var id: UUID { model.id }
@@ -18,7 +26,6 @@ class BlocVM : ObservableObject, Identifiable, Equatable {
             if !self.model.ues.compare(to: self.uesVM.map({$0.model})){
                 self.uesVM = self.model.ues.map({UEVM(withModel: $0)})
             }
-            
         }
     }
     

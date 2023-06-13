@@ -3,6 +3,7 @@ import SwiftUI
 struct ItemView: View {
     
     @State private var note: Double = 20.0
+    //@ObservedObject var editableMatiere: MatiereVM
     
     var body: some View {
         NavigationStack{
