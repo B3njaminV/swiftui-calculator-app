@@ -19,7 +19,7 @@
 		EC26BA892A1FB03500780B60 /* MatiereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC26BA882A1FB03500780B60 /* MatiereView.swift */; };
 		EC334F2F2A390EA5006E77CB /* ViewModel in Frameworks */ = {isa = PBXBuildFile; productRef = EC334F2E2A390EA5006E77CB /* ViewModel */; };
 		EC76E4732A20E0720008992A /* UEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC76E4722A20E0720008992A /* UEView.swift */; };
-		EC76E4752A20E0AD0008992A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC76E4742A20E0AD0008992A /* CalculatorView.swift */; };
+		ECFAC9992A39BE55001E6F7F /* Stub in Frameworks */ = {isa = PBXBuildFile; productRef = ECFAC9982A39BE55001E6F7F /* Stub */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 		EC26BA852A1FAEB100780B60 /* UEMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEMenuView.swift; sourceTree = "<group>"; };
 		EC26BA882A1FB03500780B60 /* MatiereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatiereView.swift; sourceTree = "<group>"; };
 		EC76E4722A20E0720008992A /* UEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEView.swift; sourceTree = "<group>"; };
-		EC76E4742A20E0AD0008992A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFAC9992A39BE55001E6F7F /* Stub in Frameworks */,
 				EC334F2F2A390EA5006E77CB /* ViewModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +144,6 @@
 		EC26BA872A1FAFB800780B60 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EC76E4742A20E0AD0008992A /* CalculatorView.swift */,
 				EC26BA832A1FAB2600780B60 /* BlocsMenuView.swift */,
 				EC26BA852A1FAEB100780B60 /* UEMenuView.swift */,
 				EC26BA882A1FB03500780B60 /* MatiereView.swift */,
@@ -178,6 +177,7 @@
 			name = Calculator;
 			packageProductDependencies = (
 				EC334F2E2A390EA5006E77CB /* ViewModel */,
+				ECFAC9982A39BE55001E6F7F /* Stub */,
 			);
 			productName = Calculator;
 			productReference = EC1C3AFE2A1DF1DD00E5CEC5 /* Calculator.app */;
@@ -296,7 +296,6 @@
 				EC26BA862A1FAEB100780B60 /* UEMenuView.swift in Sources */,
 				EC1C3B042A1DF1DD00E5CEC5 /* ContentView.swift in Sources */,
 				EC1C3B022A1DF1DD00E5CEC5 /* CalculatorApp.swift in Sources */,
-				EC76E4752A20E0AD0008992A /* CalculatorView.swift in Sources */,
 				EC26BA842A1FAB2600780B60 /* BlocsMenuView.swift in Sources */,
 				EC76E4732A20E0720008992A /* UEView.swift in Sources */,
 				EC26BA892A1FB03500780B60 /* MatiereView.swift in Sources */,
@@ -623,6 +622,10 @@
 		EC334F2E2A390EA5006E77CB /* ViewModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ViewModel;
+		};
+		ECFAC9982A39BE55001E6F7F /* Stub */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stub;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

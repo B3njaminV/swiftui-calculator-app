@@ -48,7 +48,7 @@ public class BlocVM : ObservableObject, Identifiable, Equatable {
        }
     }
 
-    static func == (lhs: BlocVM, rhs: BlocVM) -> Bool {
+    public static func == (lhs: BlocVM, rhs: BlocVM) -> Bool {
        lhs.id == rhs.id
     }
 }

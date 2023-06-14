@@ -89,7 +89,7 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
         }
     }
     
-    static func == (lhs: UEVM, rhs: UEVM) -> Bool {
+    public static func == (lhs: UEVM, rhs: UEVM) -> Bool {
         lhs.id == rhs.id
     }
 }

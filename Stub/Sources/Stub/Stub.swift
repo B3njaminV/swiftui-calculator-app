@@ -1,6 +1,9 @@
 import Foundation
+import Model
 
-public struct Stub {
+public struct Stub : DataManager {
+    
+    public init(){}
     
     public func loadBlocs() -> [Bloc] {
         var blocs: [Bloc] = []
@@ -32,5 +35,9 @@ public struct Stub {
         blocs.append(contentsOf: [bloc1, bloc2])
         
         return blocs
+    }
+    
+    public func save(blocs: [Bloc]) {
+        let bloc : Bloc
     }
 }

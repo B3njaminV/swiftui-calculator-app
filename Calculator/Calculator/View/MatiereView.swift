@@ -4,7 +4,7 @@ import ViewModel
 struct MatiereView: View {
     
     @State private var note: Double = 20.0
-    @ObservedObject var matiere: MatiereVM
+    //@ObservedObject var matiere: MatiereVM
     
     var body: some View {
         NavigationStack{
