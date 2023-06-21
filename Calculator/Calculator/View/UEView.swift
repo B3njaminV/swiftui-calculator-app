@@ -44,9 +44,15 @@ struct UEView: View {
             .toolbar{
                 Button(action: {
                     ueVM.isEditing.toggle()
+                    // si on est en mode édition
+                    // on déclenche élement la redirection vers la sheet
+                    // et on fait basculer la propriété isEditing de false a true
                 }) {
                     Text("Edit")
                 }
+            }
+            .sheet(isPresented: $ueVM.isEditing){
+                UEEditView(ueVM: ueVM)
             }
         }
     }

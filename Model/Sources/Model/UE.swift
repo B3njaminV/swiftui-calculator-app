@@ -7,7 +7,15 @@ public struct UE : Identifiable, Equatable {
     public var name: String
     public var coefficient: Int32
     public var matieres: [Matiere] = []
-    public var moyenne: Float = 18
+    public var moyenne: Float {
+        var allMoy : Float = 0
+        var allCoef: Float = 0
+        for matiere in matieres {
+            allMoy = allMoy + (matiere.note * Float(matiere.coefficient))
+            allCoef = allCoef + Float(matiere.coefficient)
+        }
+        return allMoy / allCoef
+    }
     
     public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
         self.id=id

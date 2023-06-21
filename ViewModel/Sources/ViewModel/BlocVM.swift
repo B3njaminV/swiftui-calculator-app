@@ -4,14 +4,12 @@ import Model
 @available(iOS 13.0, *)
 public class BlocVM : ObservableObject, Identifiable, Equatable {
     
-    /*
-     func onNotified(source: UEVM){
-     // 1 on met à jour le model
-     // ici y'en a pas
-     // 2 on met à jour la vue
-     self.objectWillChange.send()
-     }
-     */
+    func onNotified(source: UEVM){
+        // 1 on met à jour le model
+        // ici y'en a pas
+        // 2 on met à jour la vue
+        self.objectWillChange.send()
+    }
     
     public init(withModel model: Bloc) {
         self.model = model
@@ -38,8 +36,8 @@ public class BlocVM : ObservableObject, Identifiable, Equatable {
     @Published
     public var name: String = "" {
         didSet {
-            if self.model.name != self.name {
-                self.model.name = self.name
+            if self.name != self.model.name {
+                self.name = self.model.name
             }
         }
     }

@@ -17,7 +17,7 @@ struct ContentView: View {
                 }
                 .padding(6)
             }
-            .navigationTitle("Calculator")
+            .navigationTitle("Calculette")
         }
     }
 }

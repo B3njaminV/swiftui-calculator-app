@@ -20,6 +20,7 @@
 		EC334F2F2A390EA5006E77CB /* ViewModel in Frameworks */ = {isa = PBXBuildFile; productRef = EC334F2E2A390EA5006E77CB /* ViewModel */; };
 		EC76E4732A20E0720008992A /* UEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC76E4722A20E0720008992A /* UEView.swift */; };
 		EC78C12A2A438CAD00F942F8 /* UEItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78C1292A438CAD00F942F8 /* UEItemView.swift */; };
+		EC78C12C2A4399FC00F942F8 /* UEEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78C12B2A4399FC00F942F8 /* UEEditView.swift */; };
 		ECFAC9992A39BE55001E6F7F /* Stub in Frameworks */ = {isa = PBXBuildFile; productRef = ECFAC9982A39BE55001E6F7F /* Stub */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		EC26BA882A1FB03500780B60 /* MatiereItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatiereItemView.swift; sourceTree = "<group>"; };
 		EC76E4722A20E0720008992A /* UEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEView.swift; sourceTree = "<group>"; };
 		EC78C1292A438CAD00F942F8 /* UEItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEItemView.swift; sourceTree = "<group>"; };
+		EC78C12B2A4399FC00F942F8 /* UEEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				EC26BA882A1FB03500780B60 /* MatiereItemView.swift */,
 				EC78C1292A438CAD00F942F8 /* UEItemView.swift */,
 				EC76E4722A20E0720008992A /* UEView.swift */,
+				EC78C12B2A4399FC00F942F8 /* UEEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				EC26BA842A1FAB2600780B60 /* BlocsMenuView.swift in Sources */,
 				EC78C12A2A438CAD00F942F8 /* UEItemView.swift in Sources */,
 				EC76E4732A20E0720008992A /* UEView.swift in Sources */,
+				EC78C12C2A4399FC00F942F8 /* UEEditView.swift in Sources */,
 				EC26BA892A1FB03500780B60 /* MatiereItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

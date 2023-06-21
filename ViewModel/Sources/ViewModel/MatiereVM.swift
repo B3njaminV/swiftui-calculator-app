@@ -4,7 +4,6 @@ import Model
 @available(iOS 13.0, *)
 public class MatiereVM : ObservableObject, Identifiable {
     
-    /*
     private var notificationsFuncs: [(MatiereVM) -> ()] = []
     
     private func onNotify(){
@@ -16,7 +15,6 @@ public class MatiereVM : ObservableObject, Identifiable {
     public func subscribe(_ source: @escaping (MatiereVM) -> ()){
         self.notificationsFuncs.append(source)
     }
-    */
     
     public init(){}
     
@@ -44,7 +42,7 @@ public class MatiereVM : ObservableObject, Identifiable {
             if self.note != self.model.note {
                 self.note = self.model.note
             }
-//            onNotify()
+            onNotify()
         }
     }
     

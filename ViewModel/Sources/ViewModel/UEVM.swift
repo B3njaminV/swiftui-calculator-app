@@ -4,7 +4,6 @@ import Model
 @available(iOS 13.0, *)
 public class UEVM : ObservableObject, Identifiable, Equatable {
     
-    /*
     private var notificationsFuncs: [(UEVM) -> ()] = []
     
     private func onNotify(){
@@ -16,7 +15,6 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     public func subscribe(_ source: @escaping (UEVM) -> ()){
         self.notificationsFuncs.append(source)
     }
-    */
     
     func onNotified(source: MatiereVM){
         // Mettre à jour le model si on wrappe un model
@@ -58,9 +56,9 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
             }
             if !self.model.matieres.compare(to: self.matieresVM.map({$0.model})){
                 self.matieresVM = self.model.matieres.map({MatiereVM(withModel: $0)})
-//                self.matieresVM.forEach({$0.subscribe(self.onNotified(source:))})
+                self.matieresVM.forEach({$0.subscribe(self.onNotified(source:))})
             }
-//            onNotify()
+            onNotify()
         }
     }
     

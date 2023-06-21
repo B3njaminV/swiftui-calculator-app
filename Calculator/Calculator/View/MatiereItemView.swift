@@ -14,7 +14,6 @@ struct MatiereItemView: View {
         NavigationStack{
             VStack{
                 HStack{
-                    
                     Text(matiereVM.name)
                     Spacer()
                     Text(String(matiereVM.coefficient))
@@ -34,7 +33,7 @@ struct MatiereItemView: View {
                                     },
                                     including: edition ? .gesture : .none
                                 )
-                            Text("\(note, specifier: "%.1f")")
+                            Text("\(matiereVM.note, specifier: "%.1f")")
                                 .padding(.horizontal)
                         }
                     }
@@ -48,9 +47,9 @@ struct MatiereItemView: View {
     }
 }
 
-//struct MatiereItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let odinVM = OdinVM(withBlocs: Stub().loadBlocs())
-//        MatiereItemView(matiereVM: odinVM.blocsVM[0].uesVM[0].matieresVM[0])
-//    }
-//}
+struct MatiereItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        let odinVM = OdinVM(withBlocs: Stub().loadBlocs())
+        MatiereItemView(matiereVM: odinVM.blocsVM[0].uesVM[0].matieresVM[0], edition: false)
+    }
+}
