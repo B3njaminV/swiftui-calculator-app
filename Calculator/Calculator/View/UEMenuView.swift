@@ -18,8 +18,8 @@ struct UEMenuView: View {
                             ForEach(odinVM.blocsVM) { blocvm in
                                 ForEach(blocvm.uesVM) { uevm in
                                     HStack{
-                                        MatiereView(ueVM: uevm)
-                                        NavigationLink(destination: UEView()){
+                                        UEItemView(ueVM: uevm)
+                                        NavigationLink(destination: UEView(ueVM: uevm)){
                                             Image(systemName: "square.and.pencil")
                                         }
                                         Divider()

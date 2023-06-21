@@ -1,20 +1,24 @@
 import SwiftUI
+import ViewModel
+import Stub
 
 struct UEView: View {
+    
+    @StateObject var ueVM: UEVM
+    
+    @State private var canEdit = false
+    
     var body: some View {
         NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    VStack{
-                        MatiereView()
-                            .padding()
-                    }
-                    .padding()
+                    UEItemView(ueVM: ueVM)
+                        .padding()
                     VStack(alignment: .leading){
                         HStack{
                             Image(systemName: "xmark.circle.fill")
                             Text("coefficient :")
-                            Text("5")
+                            Text(String(ueVM.coefficient))
                         }
                         HStack{
                             Image(systemName: "map")
@@ -23,19 +27,23 @@ struct UEView: View {
                     }
                     .padding(.bottom)
                     VStack{
-                        HStack{
-                            NavigationLink(destination: UEView()){
-                                Image(systemName: "lock")
+                        ForEach(ueVM.matieresVM) { matierevm in
+                            HStack {
+                                Button(action: {
+                                    canEdit.toggle()
+                                }) {
+                                    Image(systemName: canEdit ? "lock.open" : "lock")
+                                }
+                                MatiereItemView(matiereVM: matierevm, edition: canEdit)
                             }
-                            MatiereView()
                         }
-                        .padding(.horizontal)
                     }
                 }
             }
-            .navigationTitle("UE1 Génie logiciel")
+            .navigationTitle("UE\(ueVM.numero) \(ueVM.name)")
             .toolbar{
                 Button(action: {
+                    ueVM.isEditing.toggle()
                 }) {
                     Text("Edit")
                 }
@@ -46,6 +54,7 @@ struct UEView: View {
 
 struct UEView_Previews: PreviewProvider {
     static var previews: some View {
-        UEView()
+        let odinVM = OdinVM(withBlocs: Stub().loadBlocs())
+        UEView(ueVM: odinVM.blocsVM[0].uesVM[0])
     }
 }

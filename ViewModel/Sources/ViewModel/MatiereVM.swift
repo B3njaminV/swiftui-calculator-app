@@ -38,11 +38,11 @@ public class MatiereVM : ObservableObject, Identifiable {
             if self.name != self.model.name {
                 self.name = self.model.name
             }
-            if self.model.coefficient != self.coefficient {
-                self.model.coefficient = self.coefficient
+            if self.coefficient != self.model.coefficient {
+                self.coefficient = self.model.coefficient
             }
-            if self.model.note != self.note {
-                self.model.note = self.note
+            if self.note != self.model.note {
+                self.note = self.model.note
             }
 //            onNotify()
         }

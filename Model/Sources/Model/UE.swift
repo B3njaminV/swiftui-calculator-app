@@ -7,7 +7,7 @@ public struct UE : Identifiable, Equatable {
     public var name: String
     public var coefficient: Int32
     public var matieres: [Matiere] = []
-    public var moyenne: Float = 4
+    public var moyenne: Float = 18
     
     public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
         self.id=id
@@ -17,16 +17,12 @@ public struct UE : Identifiable, Equatable {
         self.matieres=matieres
     }
     
-    public init(withNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
-        self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient, andMatiere: [])
-    }
-    
     public init(withId id : UUID, andNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32){
         self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient, andMatiere: [])
     }
     
-    public init(withNumero numero : Int32, andName name: String, andCoefficient coefficient: Int32){
-        self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient)
+    public init(withNumero numero: Int32, andName name: String, andCoefficient coefficient: Int32, andMatiere matieres: [Matiere]){
+        self.init(withId: UUID(), andNumero: numero, andName: name, andCoefficient: coefficient, andMatiere: matieres)
     }
     
     public mutating func addMatiere(matiere: Matiere) -> Void {

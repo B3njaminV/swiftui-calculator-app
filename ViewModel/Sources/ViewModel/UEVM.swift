@@ -44,14 +44,14 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     
     @Published var model: UE = UE(withId: UUID(), andNumero: 1, andName: "", andCoefficient: 0) {
         didSet {
-            if self.model.numero != self.numero {
-                self.model.numero = self.numero
+            if self.numero != self.model.numero {
+                self.numero = self.model.numero
             }
             if self.name != self.model.name {
                 self.name = self.model.name
             }
-            if self.model.coefficient != self.coefficient {
-                self.model.coefficient = self.coefficient
+            if self.coefficient != self.model.coefficient {
+                self.coefficient = self.model.coefficient
             }
             if self.moyenne != self.model.moyenne {
                 self.moyenne = self.model.moyenne
