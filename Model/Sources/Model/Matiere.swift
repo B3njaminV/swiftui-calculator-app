@@ -11,7 +11,7 @@ public struct Matiere : Identifiable, Equatable {
             self.id=id
             self.name=name
             self.coefficient=coefficient
-            self.note=note
+            self.note=note * Float(coefficient)
     }
     
     public init(withName name: String, andCoefficient coefficient: Int32, andNote note: Float){

@@ -4,6 +4,7 @@ import Model
 @available(iOS 13.0, *)
 public class UEVM : ObservableObject, Identifiable, Equatable {
     
+    /*
     private var notificationsFuncs: [(UEVM) -> ()] = []
     
     private func onNotify(){
@@ -15,6 +16,7 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     public func subscribe(_ source: @escaping (UEVM) -> ()){
         self.notificationsFuncs.append(source)
     }
+    */
     
     func onNotified(source: MatiereVM){
         // Mettre à jour le model si on wrappe un model
@@ -27,10 +29,16 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     }
     
     public init(){}
-
+    
     public init(withModel model: UE){
         self.model = model
     }
+    
+    private var copy: UEVM {
+        UEVM(withModel: self.model)
+    }
+    
+    public var editedCopy: UEVM?
     
     public var id: UUID { model.id }
     
@@ -45,16 +53,19 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
             if self.model.coefficient != self.coefficient {
                 self.model.coefficient = self.coefficient
             }
+            if self.moyenne != self.model.moyenne {
+                self.moyenne = self.model.moyenne
+            }
             if !self.model.matieres.compare(to: self.matieresVM.map({$0.model})){
                 self.matieresVM = self.model.matieres.map({MatiereVM(withModel: $0)})
-                self.matieresVM.forEach({$0.subscribe(self.onNotified(source:))})
+//                self.matieresVM.forEach({$0.subscribe(self.onNotified(source:))})
             }
-            onNotify()
+//            onNotify()
         }
     }
-         
+    
     @Published
-    var name: String = "" {
+    public var name: String = "" {
         didSet {
             if self.model.name != self.name {
                 self.model.name = self.name
@@ -63,7 +74,7 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     }
     
     @Published
-    var numero: Int32 = 0 {
+    public var numero: Int32 = 0 {
         didSet {
             if self.model.numero != self.numero {
                 self.model.numero = self.numero
@@ -72,7 +83,7 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
     }
     
     @Published
-    var coefficient: Int32 = 0 {
+    public var coefficient: Int32 = 0 {
         didSet {
             if self.model.coefficient != self.coefficient {
                 self.model.coefficient = self.coefficient
@@ -80,13 +91,40 @@ public class UEVM : ObservableObject, Identifiable, Equatable {
         }
     }
     
-    @Published var matieresVM: [MatiereVM] = [] {
+    @Published
+    public var moyenne: Float = 0 {
+        didSet {
+            if self.moyenne != self.model.moyenne {
+                self.moyenne = self.model.moyenne
+            }
+        }
+    }
+    
+    @Published
+    public var matieresVM: [MatiereVM] = [] {
         didSet {
             let modelMatieres = self.matieresVM.map({$0.model})
             if !self.model.matieres.compare(to: modelMatieres){
                 self.model.matieres = matieresVM.map({$0.model})
             }
         }
+    }
+    
+    @Published
+    public var isEditing: Bool = false
+    
+    public func onEditing(){
+        editedCopy = self.copy
+        isEditing = true
+    }
+    
+    public func onEdited(isCancelled: Bool = false){
+        if(!isCancelled) {
+            if let edit = editedCopy {
+                self.model = edit.model
+            }
+        }
+        isEditing = false
     }
     
     public static func == (lhs: UEVM, rhs: UEVM) -> Bool {

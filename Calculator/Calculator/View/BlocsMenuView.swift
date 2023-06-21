@@ -3,7 +3,7 @@ import Stub
 import ViewModel
 struct BlocsMenuView: View {
     
-    @StateObject public var odinVM : OdinVM
+    @StateObject var odinVM : OdinVM
     
     var body: some View {
         VStack{
@@ -12,20 +12,14 @@ struct BlocsMenuView: View {
                     .font(.title)
                 Text("Vous devez avoir la moyenne à chacun des blocs pour avoir votre diplôme")
                 
-                HStack{
-                    Label("Total", systemImage: "doc.on.doc.fill")
-                    Spacer()
+                ForEach(odinVM.blocsVM){ blocvm in
                     HStack{
-                        Text("11.12")
-                        Image(systemName: "graduationcap.circle.fill")
-                    }
-                }
-                HStack{
-                    Label("Projet/Stage", systemImage: "doc.on.doc.fill")
-                    Spacer()
-                    HStack{
-                        Text("11.12")
-                        Image(systemName: "graduationcap.circle.fill")
+                        Label(blocvm.name, systemImage: "doc.on.doc.fill")
+                        Spacer()
+                        HStack{
+                            Text(String(format: "%.2f", blocvm.moyenne))
+                            Image(systemName: "graduationcap.circle.fill")
+                        }
                     }
                 }
             }
@@ -38,6 +32,6 @@ struct BlocsMenuView: View {
 
 struct BlocsMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        BlocsMenuView(odinVM: OdinVM(blocs: Stub().loadBlocs()))
+        BlocsMenuView(odinVM: OdinVM(withBlocs: Stub().loadBlocs()))
     }
 }

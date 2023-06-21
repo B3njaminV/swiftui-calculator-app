@@ -4,6 +4,7 @@ import Model
 @available(iOS 13.0, *)
 public class MatiereVM : ObservableObject, Identifiable {
     
+    /*
     private var notificationsFuncs: [(MatiereVM) -> ()] = []
     
     private func onNotify(){
@@ -15,16 +16,24 @@ public class MatiereVM : ObservableObject, Identifiable {
     public func subscribe(_ source: @escaping (MatiereVM) -> ()){
         self.notificationsFuncs.append(source)
     }
+    */
     
     public init(){}
-
+    
     public init(withModel model: Matiere){
         self.model = model
     }
     
+    private var copy: MatiereVM {
+        MatiereVM(withModel: self.model)
+    }
+    
+    public var editedCopy: MatiereVM?
+    
     public var id: UUID { model.id }
     
-    @Published var model: Matiere = Matiere(withId: UUID(), andName: "", andCoefficient: 0, andNote: 10.0) {
+    @Published
+    var model: Matiere = Matiere(withId: UUID(), andName: "", andCoefficient: 0, andNote: 10.0) {
         didSet {
             if self.name != self.model.name {
                 self.name = self.model.name
@@ -35,12 +44,12 @@ public class MatiereVM : ObservableObject, Identifiable {
             if self.model.note != self.note {
                 self.model.note = self.note
             }
-            onNotify()
+//            onNotify()
         }
     }
-         
+    
     @Published
-    var name: String = "" {
+    public var name: String = "" {
         didSet {
             if self.model.name != self.name {
                 self.model.name = self.name
@@ -49,7 +58,7 @@ public class MatiereVM : ObservableObject, Identifiable {
     }
     
     @Published
-    var coefficient: Int32 = 0 {
+    public var coefficient: Int32 = 0 {
         didSet {
             if self.model.coefficient != self.coefficient {
                 self.model.coefficient = self.coefficient
@@ -58,11 +67,28 @@ public class MatiereVM : ObservableObject, Identifiable {
     }
     
     @Published
-    var note: Float = 10.0 {
+    public var note: Float = 10.0 {
         didSet{
             if self.model.note != self.note {
                 self.model.note = self.note
             }
         }
+    }
+    
+    @Published
+    var isEditing: Bool = false
+    
+    func onEditing(){
+        editedCopy = self.copy
+        isEditing = true
+    }
+    
+    func onEdited(isCancelled: Bool = false){
+        if(!isCancelled){
+            if let edit = editedCopy {
+                self.model = edit.model
+            }
+        }
+        isEditing = false
     }
 }

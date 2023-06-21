@@ -6,7 +6,7 @@ import ViewModel
 struct CalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(odinVM: OdinVM(blocs: Stub().loadBlocs()))
+            ContentView(odinVM: OdinVM(withBlocs: Stub().loadBlocs()))
         }
     }
 }

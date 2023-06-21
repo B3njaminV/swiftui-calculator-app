@@ -1,25 +1,27 @@
 import SwiftUI
 import ViewModel
+import Stub
 
 struct MatiereView: View {
     
+    @StateObject var ueVM: UEVM
     @State private var note: Double = 20.0
-    //@ObservedObject var matiere: MatiereVM
     
     var body: some View {
         NavigationStack{
             VStack{
                 HStack{
-                    Text("UE1 - Génie logiciel")
+                    
+                    Text("UE\(ueVM.numero) - \(ueVM.name)")
                     Spacer()
-                    Text("6")
+                    Text(String(ueVM.coefficient))
                 }
                 .padding(.horizontal)
                 HStack{
                     GeometryReader { geometry in
                         HStack(spacing: 0) {
                             Capsule()
-                                .frame(width: max(CGFloat(note / 20) * 200, 20), height: 30)
+                                .frame(width: max(CGFloat(ueVM.moyenne / 20) * 200, 20), height: 30)
                                 .foregroundColor(note < 10 ? .red : .green)
                                 .gesture(DragGesture()
                                     .onChanged { value in
@@ -44,6 +46,7 @@ struct MatiereView: View {
 
 struct MatiereView_Previews: PreviewProvider {
     static var previews: some View {
-        MatiereView()
+        let odinVM = OdinVM(withBlocs: Stub().loadBlocs())
+        MatiereView(ueVM : odinVM.blocsVM[0].uesVM[0])
     }
 }

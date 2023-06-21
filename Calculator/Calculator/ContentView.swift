@@ -13,17 +13,17 @@ struct ContentView: View {
                     BlocsMenuView(odinVM: odinVM)
                     Divider()
                         .padding(.vertical, 2)
-                    UEMenuView()
+                    UEMenuView(odinVM: odinVM)
                 }
                 .padding(6)
             }
-            .navigationTitle("Calculette")
+            .navigationTitle("Calculator")
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(odinVM: OdinVM(blocs: Stub().loadBlocs()))
+        ContentView(odinVM: OdinVM(withBlocs:  Stub().loadBlocs()))
     }
 }

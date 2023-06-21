@@ -4,20 +4,21 @@ public struct Bloc : Identifiable, Equatable {
     
     public let id: UUID
     public var name: String
-    public var ues: [UE] = []
+    public var ues: [UE]
+    public var moyenne: Float = 13
     
     public init(withId id : UUID, withName name : String, andUes ues: [UE]){
         self.id=id
         self.name=name
         self.ues=ues
     }
-        
-    public init(withNumero numero : Int32, withName name : String, andUes ues: [UE]){
+    
+    public init(withName name : String, andUes ues: [UE]){
         self.init(withId: UUID(), withName: name, andUes: ues)
     }
     
     public static func == (lhs: Bloc, rhs: Bloc) -> Bool {
-            return lhs.id == rhs.id
+        return lhs.id == rhs.id
     }
 }
 

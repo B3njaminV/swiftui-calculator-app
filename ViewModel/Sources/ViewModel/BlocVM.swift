@@ -4,14 +4,16 @@ import Model
 @available(iOS 13.0, *)
 public class BlocVM : ObservableObject, Identifiable, Equatable {
     
-    func onNotified(source: UEVM){
-        // 1 on met à jour le model
-        // ici y'en a pas
-        // 2 on met à jour la vue
-        self.objectWillChange.send()
-    }
+    /*
+     func onNotified(source: UEVM){
+     // 1 on met à jour le model
+     // ici y'en a pas
+     // 2 on met à jour la vue
+     self.objectWillChange.send()
+     }
+     */
     
-    public init(model: Bloc) {
+    public init(withModel model: Bloc) {
         self.model = model
     }
     
@@ -25,30 +27,45 @@ public class BlocVM : ObservableObject, Identifiable, Equatable {
             }
             if !self.model.ues.compare(to: self.uesVM.map({$0.model})){
                 self.uesVM = self.model.ues.map({UEVM(withModel: $0)})
-                self.uesVM.forEach({$0.subscribe(self.onNotified(source:))})
+                //                self.uesVM.forEach({$0.subscribe(self.onNotified(source:))})
+            }
+            if self.moyenne != self.model.moyenne {
+                self.moyenne = self.model.moyenne
             }
         }
     }
     
     @Published
-    var name: String = "" {
-       didSet {
-           if self.model.name != self.name {
-               self.model.name = self.name
-           }
-       }
+    public var name: String = "" {
+        didSet {
+            if self.model.name != self.name {
+                self.model.name = self.name
+            }
+        }
     }
-
-    @Published var uesVM: [UEVM] = [] {
-       didSet {
-           let modelUE = self.uesVM.map({$0.model})
-           if !self.model.ues.compare(to: modelUE){
-               self.model.ues = uesVM.map({$0.model})
-           }
-       }
+    
+    @Published
+    public var moyenne: Float = 0 {
+        didSet {
+            if self.moyenne != self.model.moyenne {
+                self.moyenne = self.model.moyenne
+            }
+        }
     }
-
+    
+    
+    @Published
+    public var uesVM: [UEVM] = [] {
+        didSet {
+            let modelUE = self.uesVM.map({$0.model})
+            if !self.model.ues.compare(to: modelUE){
+                self.model.ues = uesVM.map({$0.model})
+            }
+        }
+    }
+    
+    
     public static func == (lhs: BlocVM, rhs: BlocVM) -> Bool {
-       lhs.id == rhs.id
+        lhs.id == rhs.id
     }
 }

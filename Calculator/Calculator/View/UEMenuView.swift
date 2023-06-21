@@ -1,6 +1,11 @@
 import SwiftUI
+import ViewModel
+import Stub
 
 struct UEMenuView: View {
+    
+    @StateObject var odinVM : OdinVM
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -10,48 +15,18 @@ struct UEMenuView: View {
                             .font(.title)
                         Text("Détail des UEs")
                         VStack {
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
+                            ForEach(odinVM.blocsVM) { blocvm in
+                                ForEach(blocvm.uesVM) { uevm in
+                                    HStack{
+                                        MatiereView(ueVM: uevm)
+                                        NavigationLink(destination: UEView()){
+                                            Image(systemName: "square.and.pencil")
+                                        }
+                                        Divider()
+                                    }
                                 }
-                                Divider()
                             }
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
-                                }
-                                Divider()
-                            }
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
-                                }
-                                Divider()
-                            }
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
-                                }
-                                Divider()
-                            }
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
-                                }
-                                Divider()
-                            }
-                            HStack{
-                                MatiereView()
-                                NavigationLink(destination: UEView()){
-                                    Image(systemName: "square.and.pencil")
-                                }
-                                Divider()
-                            }
+                            
                         }
                     }
                     
@@ -69,6 +44,6 @@ struct UEMenuView: View {
 
 struct UEMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        UEMenuView()
+        UEMenuView(odinVM: OdinVM(withBlocs: Stub().loadBlocs()))
     }
 }

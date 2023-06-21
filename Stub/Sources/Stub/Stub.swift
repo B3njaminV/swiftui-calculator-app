@@ -8,7 +8,7 @@ public struct Stub : DataManager {
     public func loadBlocs() -> [Bloc] {
         var blocs: [Bloc] = []
         
-        var bloc1 = Bloc(withNumero: 1, withName: "Total", andUes: [
+        let bloc1 = Bloc(withName: "Total", andUes: [
             UE(withNumero:1, andName: "Génie logiciel", andCoefficient: 6, andMatiere: [
                 Matiere(withName:  "Processus de développement", andCoefficient: 4, andNote: 19.04),
                 Matiere(withName:  "Programmation objets", andCoefficient: 9, andNote: 10.00),
@@ -23,7 +23,7 @@ public struct Stub : DataManager {
             ])
         ])
         
-        var bloc2 = Bloc(withNumero: 1, withName: "Projet / Stage", andUes: [
+        let bloc2 = Bloc(withName: "Projet / Stage", andUes: [
             UE(withNumero:1, andName: "Projet", andCoefficient: 6, andMatiere: [
                 Matiere(withName:  "Projet", andCoefficient: 4, andNote: 10.00)
             ]),
@@ -33,11 +33,10 @@ public struct Stub : DataManager {
         ])
         
         blocs.append(contentsOf: [bloc1, bloc2])
-        
+
         return blocs
     }
     
     public func save(blocs: [Bloc]) {
-        let bloc : Bloc
     }
 }
