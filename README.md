@@ -9,7 +9,7 @@
 
 | Vue principal | Vue détail | Modification |
 |-------------- | --------------| --------------|  
-| ![Image](https://i.goopics.net/vasp2l.png) | ![Image](https://i.goopics.net/jny84d.png) |  ![Image](https://i.goopics.net/s51rsi.png) | 
+| ![Image](https://i.goopics.net/vasp2l.png) | ![Image](https://i.goopics.net/jny84d.png) |  ![Image](https://i.goopics.net/0rnsua.png) | 
 
 ## ✍️ Auteur
 
