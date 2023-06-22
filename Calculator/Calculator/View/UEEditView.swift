@@ -4,12 +4,13 @@ import Stub
 
 struct UEEditView: View {
     
-    @StateObject var ueVM: UEVM
+    @ObservedObject var ueVM: UEVM
     
     var body: some View {
         NavigationStack {
             VStack{
                 Form {
+                    Text("Infos utiles :")
                     HStack() {
                         Text("Titre").bold()
                         TextField("", text: $ueVM.name)
@@ -18,10 +19,15 @@ struct UEEditView: View {
                         Text("Coefficient").bold()
                         TextField("", value: $ueVM.coefficient, format: .number)
                     }
+                    Text("Liste des matières :")
+                    ForEach($ueVM.matieresVM) { $matiereVM in
+                        HStack {
+                            TextField("Nom", text: $matiereVM.name).bold()
+                            TextField("Coefficient", value: $matiereVM.coefficient, format: .number)
+                        }
+                    }
                 }
-                
             }
-            
             .navigationTitle("UE\(ueVM.numero) \(ueVM.name)")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
